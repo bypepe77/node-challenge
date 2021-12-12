@@ -9,7 +9,7 @@ const ListSchema = new Schema(
       },
     movies: [{
         type: Schema.Types.ObjectId,
-        ref: "Movies"
+        ref: "Movie"
     }],
   },
   {
