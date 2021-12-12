@@ -15,8 +15,16 @@ const ObjectIdIsValid = (id) => {
     } else {
       return false
     }
-  }
+}
+const checkIfLoggedIn = (req, res, next) => {
+    if (req.session.currentUser) {
+      next();
+    } else {
+      res.status(401).json({ code: "You are not logged in" });
+    }
+  };
   module.exports = {
     checkUsernameAndPasswordAndNameNotEmpty,
-    ObjectIdIsValid
+    ObjectIdIsValid,
+    checkIfLoggedIn
   };

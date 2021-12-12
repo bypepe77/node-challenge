@@ -1,9 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-var mongoose = require('mongoose')
-
-const { checkUsernameAndPasswordAndNameNotEmpty } = require("../middlewares");
 const User = require("../models/User");
+const { checkUsernameAndPasswordAndNameNotEmpty } = require("../middlewares");
+
 
 const bcryptSalt = 10;
 
