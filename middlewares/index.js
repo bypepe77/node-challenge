@@ -9,6 +9,22 @@ const checkUsernameAndPasswordAndNameNotEmpty = (req, res, next) => {
     }
   };
 
+const ObjectIdIsValid = (id) => {
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      return true
+    } else {
+      return false
+    }
+}
+const checkIfLoggedIn = (req, res, next) => {
+    if (req.session.currentUser) {
+      next();
+    } else {
+      res.status(401).json({ code: "You are not logged in" });
+    }
+  };
   module.exports = {
     checkUsernameAndPasswordAndNameNotEmpty,
+    ObjectIdIsValid,
+    checkIfLoggedIn
   };

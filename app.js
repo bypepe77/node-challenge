@@ -26,6 +26,8 @@ mongoose
   });
 
 const authRouter = require("./routes/Auth");
+const listRouter = require("./routes/list");
+const movieRouter = require("./routes/movies");
 const app = express();
 
 app.set("trust proxy", true);
@@ -64,6 +66,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/auth", authRouter);
+app.use("/list", listRouter);
+app.use("/movies", movieRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
