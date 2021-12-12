@@ -78,7 +78,7 @@ router.get("/:listId/detail", checkIfLoggedIn, async (req, res, next) => {
     /*
           * Get list in detail
           * Requires list id to get all lists of a user
-          * Return a single list
+          * Return a single list.
     */
     const { listId } = req.params;
     const username = req.session.currentUser;
