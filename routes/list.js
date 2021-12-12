@@ -100,6 +100,35 @@ router.get("/:listId/detail", checkIfLoggedIn, async (req, res, next) => {
 
 });
 
+router.get("/:movieId/:listid/add", checkIfLoggedIn, async (req, res, next) => {
+    /*
+          * Add a movie to a list
+          * Requires movie id and list id to add a movie to a list
+          * Return the list with the movie added
+    */
+    const { movieId, listid } = req.params;
+    const username = req.session.currentUser;
+    try { 
+        if(ObjectIdIsValid(movieId) && ObjectIdIsValid(listid)) {
+            const movie = await Movie.findOne({ _id: movieId });
+            const list = await List.findOne({ _id: listid });
+            if(movie && list) {
+                list.movies.push(movie._id);
+                await list.save();
+                res.status(200).json({  message: "Movie added successfully", list });
+            }else{
+                res.status(500).json({ message: "Error adding Movie "});
+            }
+        }else{
+            res.status(500).json({ message: "Invalid movie ID or list ID"});
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
 
 
 module.exports = router;
