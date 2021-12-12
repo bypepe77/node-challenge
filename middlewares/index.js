@@ -9,6 +9,14 @@ const checkUsernameAndPasswordAndNameNotEmpty = (req, res, next) => {
     }
   };
 
+const ObjectIdIsValid = (id) => {
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      return true
+    } else {
+      return false
+    }
+  }
   module.exports = {
     checkUsernameAndPasswordAndNameNotEmpty,
+    ObjectIdIsValid
   };
