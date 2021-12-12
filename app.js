@@ -26,6 +26,7 @@ mongoose
   });
 
 const authRouter = require("./routes/Auth");
+const listRouter = require("./routes/list");
 const app = express();
 
 app.set("trust proxy", true);
@@ -64,6 +65,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/auth", authRouter);
+app.use("/list", listRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
