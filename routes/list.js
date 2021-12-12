@@ -28,6 +28,26 @@ router.post("/create", checkIfLoggedIn, async (req, res, next) => {
 
 });
 
+router.get("/all", checkIfLoggedIn, async (req, res, next) => {
+    /*
+          * Get all lists
+          * Requires to be logged in
+          * Return all lists of the users  
+    */
+    try {
+        const lists = await List.find({});
+        if(lists) {
+            res.status(200).json({  message: "Lists retrieved successfully", lists });
+        }else{
+            res.status(500).json({ message: "Error retrieving Lists "});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+
+});
+
 
 
 module.exports = router;
