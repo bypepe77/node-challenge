@@ -5,6 +5,11 @@ const { checkIfLoggedIn } = require("../middlewares");
 const router = express.Router();
 
 router.post("/create", checkIfLoggedIn, async (req, res, next) => {
+    /*
+          * Create a new list
+          * Require name and username id to create a list
+          * Return the list created  
+    */
     const { name } = req.body;
     const username = req.session.currentUser;
     try {
