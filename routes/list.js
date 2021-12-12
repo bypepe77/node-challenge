@@ -104,7 +104,7 @@ router.get("/:movieId/:listid/add", checkIfLoggedIn, async (req, res, next) => {
     /*
           * Add a movie to a list
           * Requires movie id and list id to add a movie to a list
-          * Return the list with the movie added
+          * Return the list with the movie added.
     */
     const { movieId, listid } = req.params;
     const username = req.session.currentUser;
